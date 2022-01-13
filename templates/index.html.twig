@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class='row'>
+        <div class='col-md-6 offset-md-3'>
+
+            <h4>work in porgress....</h4>
+            {% if app.user %}
+                <p>Welcome registered user: {{app.user.email}}</p>
+            {% else %}
+                <p>Welcome unregistered user!</p>
+            {% endif %}
+
+            <div>
+                <a class="btn btn-primary" href="{{ path('tavern_add')}}">Add a new tavern</a>
+            </div>
+            <br>
+            <div>
+                <h4>The Tavern List!</h4>
+            </div>
+            <br>
+            <div>
+                <div class="list-group ">
+                {% for tavern in taverns %}
+                    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="{{ path('tavern_detail', {'id': tavern.id}) }}">
+                        {{ tavern.name }}
+                        <span class="badge badge-primary rounded-pill">{{tavern.getVoteByUsers | length}}</span>
+                        <a class="btn btn-primary" href="{{ path('tavern_vote', {'id': tavern.id})  }}">Vote!</a>
+                    </a>
+                {% else %}
+                    <li class="list-group-item">No tavern added yet, go for it, thirst is coming!</li>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p>
+    {% if error is defined %}
+        {{ error }}
+    {% endif %}
+    </p>
+{% endblock %}

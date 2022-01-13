@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello My Registration Page!{% endblock %}
+
+{% block body %}
+
+
+    <div class='row'>
+        <div class='col-md-6 offset-md-3'>
+            <center>
+            <h4>Registration</h4>
+            <p>
+            already registered ? <a href="{{ path('app_login') }}">login!</a>
+            </p>
+            </center>
+            <div>
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

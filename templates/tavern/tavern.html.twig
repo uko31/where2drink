@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Tavern!{% endblock %}
+
+{% block body %}
+
+    <div class='row'>
+        <div class='col-md-6 offset-md-3'>
+            {{  tavern.name }} - {{ tavern.address.street }} in {{ tavern.address.city }}
+            {% if tavern.addedBy %}
+                {% if tavern.addedBy.nickname %}
+                - this place is known thanks to: {{ tavern.addedBy.nickname }} ({{ tavern.addedBy.email }})
+                {% else %}
+                - this place is known thanks to: {{ tavern.addedBy.email }} 
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
